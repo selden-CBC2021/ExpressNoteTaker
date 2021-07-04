@@ -2,6 +2,7 @@
 
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 
 // Sets up the Express App
 
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 3001;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "Develop/public")));
 
 
 // app.get('/', (req, res) => {
@@ -21,18 +23,12 @@ app.use(express.json());
 //     res.send("This is the about page");
 //   })
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+// GET requests for html
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'Develop/public/index.html')));
 
-app.get('/add', (req, res) => res.sendFile(path.join(__dirname, 'notes.html')));
+app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'Develop/public/notes.html')));
 
-app.get('/:add', (req, res) => {
-    const chosen = req.params.add;
-  
-    console.log(chosen);
-  
-    res.end();
-  });
+app.get('/api/notes', (req, res) => res.sendFile(path.json(__dirname, "Develop/db/db.json")));
 
-  
-
-  app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
+// Start the server on the port
+app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));

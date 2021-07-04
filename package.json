@@ -1,0 +1,26 @@
+{
+  "name": "expressnotetaker",
+  "version": "1.0.0",
+  "description": "\"\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "\"\"",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selden-CBC2021/ExpressNoteTaker.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "\"\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/selden-CBC2021/ExpressNoteTaker/issues"
+  },
+  "homepage": "https://github.com/selden-CBC2021/ExpressNoteTaker#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

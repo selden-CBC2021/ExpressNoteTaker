@@ -2,25 +2,28 @@
 
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
+const apiRoutes = require('./routes/apiRoutes');
+const htmlRoutes = require('./routes/htmlRoutes');
 
-// Sets up the Express App
+
+// Sets up the Express server and sets the initial port
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Sets up the Express app to handle data parsing
+// Sets up the Express app to handle data parsing and middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'Develop/public')));
+app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
-app.use('/api/notes', apiRoutes);
+
+// require('./routes/apiRoutes')(app);
+// require('./routes/htmlRoutes')(app);
 
 
 
-app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '../public/notes.html')));
 
-app.get('/api/notes', (req, res) => res.sendFile(path.json(__dirname, "../db/db.json")));
 
 // Start the server on the port
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));

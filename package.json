@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/selden-CBC2021/ExpressNoteTaker#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nanoid": "^3.1.23",
+    "uuid": "^8.3.2"
   }
 }

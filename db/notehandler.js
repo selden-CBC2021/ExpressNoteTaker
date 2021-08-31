@@ -23,7 +23,7 @@ class Notehandler {
   async getNotes() {
     const notes = await this.read();
     let allNotes;
-    // make the notes an array of objects returns an empty array if there are no notes
+    // make the notes an array of objects returns an empty array if there are no
     try {
       allNotes = [].concat(JSON.parse(notes));
     } catch (err) {
@@ -47,11 +47,13 @@ class Notehandler {
     return newNote;
   }
  
-async removeNote(id) {
+  async removeNote(id) {
     // Get all notes, filters the note out where uuid = note uuid
     // writes the new filtered notes
+  const notes = await this.getNotes();
   const filteredNotes = notes.filter((note) => note.id !== id);
-    return await this.write(filteredNotes);
+  return await this.write(filteredNotes);
+    
   }
 }
 
